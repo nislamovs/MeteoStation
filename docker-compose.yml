@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+
+  influxdb:
+    image: influxdb:latest
+    hostname: influxdb
+    container_name: influxdb
+    user: "$UID:$GID"
+    ports:
+      - "8086:8086"
+    volumes:
+      - ./volumes/influxdb:/var/lib/influxdb:rw
+      - ./volumes/influxdb/config:/etc/influxdb
+    environment:
+      - INFLUXDB_DB=meteo
+      - INFLUXDB_ADMIN_USER=influx
+      - INFLUXDB_ADMIN_PASSWORD=influx
+      - INFLUXDB_ADMIN_ENABLED=true
+    restart: always
+
+  app:
+    container_name: "meteostation"
+    hostname: localhost
+    build:
+      context: ./server/
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+      - "8000:8000"     # debugging
+    depends_on:
+      - influxdb
+
+  influxdb-cli:
+    image: influxdb
+    entrypoint:
+      - influx
+      - host
+      - influxdb
+    links:
+      - influxdb
+
+  adminer:
+    container_name: "adminer"
+    image: adminer
+    restart: always
+    ports:
+      - "8081:8080"

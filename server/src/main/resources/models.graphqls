@@ -1,0 +1,30 @@
+schema {
+  query: Queries
+  mutation: Mutations
+}
+########################################    QUERIES   ##############################################
+
+type Queries{
+
+    getBMP085MeasurementsByDeviceId(deviceId:String): String
+    getDHT11MeasurementsByDeviceId(deviceId:String): String
+}
+
+########################################   MUTATIONS   ##############################################
+
+
+type Mutations{
+    addMeasurement(deviceId:String! dht11dto:DHT11DTO bmp085dto:BMP085DTO): String
+}
+
+input DHT11DTO {
+    humidity: String!
+    temperature: String!
+}
+
+input BMP085DTO{
+    temperature: String!
+    pressure: String!
+    altitude: String!
+    seaLevelPressure: String!
+}
