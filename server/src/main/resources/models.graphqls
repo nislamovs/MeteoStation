@@ -14,17 +14,17 @@ type Queries{
 
 
 type Mutations{
-    addMeasurement(deviceId:String! dht11dto:DHT11DTO bmp085dto:BMP085DTO): String
+    addMeasurement(deviceId:String dht11dto:DHT11DTO bmp085dto:BMP085DTO): String
 }
 
 input DHT11DTO {
-    humidity: String!
-    temperature: String!
+    humidity: String
+    temperature: String
 }
 
 input BMP085DTO{
-    temperature: String!
-    pressure: String!
-    altitude: String!
-    seaLevelPressure: String!
+    temperature: String
+    pressure: String
+    altitude: String
+    seaLevelPressure: String
 }

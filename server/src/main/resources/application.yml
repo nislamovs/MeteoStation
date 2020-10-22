@@ -1,20 +1,34 @@
 server:
   port: 8080
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
 graphql:
   servlet:
-    mapping: /graphql
+    actuator-metrics: true
+  playground:
+    cdn:
+      version: latest
+altair:
+  enabled: true
+  cdn:
+    enabled: false
+graphiql:
+  enabled: true
+  cdn:
     enabled: true
-    corsEnabled: true
-
-#graphiql:
-#  mapping: /graphiql
-#  endpoint: /graphql
-#  enabled: true
-#  pageTitle: GraphiQL
-#  cdn:
-#    enabled: false
-#    version: 0.11.11
+    version: 0.17.5
+voyager:
+  enabled: true
+  cdn:
+    enabled: false
+graphql.playground:
+  enabled: true
+  cdn:
+    enabled: false
 
 
 spring:

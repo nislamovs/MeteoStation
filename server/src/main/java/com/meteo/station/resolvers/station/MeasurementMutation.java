@@ -17,7 +17,7 @@ public class MeasurementMutation implements GraphQLMutationResolver {
 
     public String addMeasurement(String deviceId, DHT11DTO dht11dto, BMP085DTO bmp085dto) {
         System.out.println(">>>>    " +  deviceId + " " +  dht11dto.toString() + " " + bmp085dto.toString());
-        return "";
+        return "Mut_OK";
 //        BMP085Measurement newMeasure = Post.builder()
 //                .title(post.getTitle())
 //                .content(post.getContent())
