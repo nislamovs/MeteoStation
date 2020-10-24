@@ -7,11 +7,13 @@ import lombok.NoArgsConstructor;
 import org.influxdb.annotation.Column;
 import org.influxdb.annotation.Measurement;
 
+import java.io.Serializable;
+
 @Data
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@Measurement(name = "BMP085")
+@Measurement(name = "BMP085", database = "meteo")
 public class BMP085Measurement {
 
     @Column(name = "deviceId")

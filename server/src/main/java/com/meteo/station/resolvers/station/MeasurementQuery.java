@@ -4,6 +4,7 @@ import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.meteo.station.domain.dto.BMP085DTO;
 import com.meteo.station.domain.dto.DHT11DTO;
 import com.meteo.station.domain.models.BMP085Measurement;
+import com.meteo.station.services.MeasurementService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ArrayUtils;
@@ -17,7 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MeasurementQuery implements GraphQLQueryResolver {
 
-//    private final MeasurementService measurementService;
+    private final MeasurementService measurementService;
 
     public String getBMP085MeasurementsByDeviceId(String deviceId) {
 //        return Arrays.asList(BMP085DTO.builder()

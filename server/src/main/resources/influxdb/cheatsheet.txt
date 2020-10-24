@@ -1,0 +1,15 @@
+# check version
+
+curl -sL -I localhost:8086/ping
+
+show databases
+use <database>
+
+show measurements
+
+show field keys
+
+#last 10 measurements
+select * from DHT11 order by time desc limit 10
+
+select * from BMP085 order by time desc limit 10

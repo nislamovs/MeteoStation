@@ -16,12 +16,10 @@ public class MeasurementMutation implements GraphQLMutationResolver {
     private final MeasurementService measurementService;
 
     public String addMeasurement(String deviceId, DHT11DTO dht11dto, BMP085DTO bmp085dto) {
-        System.out.println(">>>>    " +  deviceId + " " +  dht11dto.toString() + " " + bmp085dto.toString());
-        return "Mut_OK";
-//        BMP085Measurement newMeasure = Post.builder()
-//                .title(post.getTitle())
-//                .content(post.getContent())
-//                .build();
 
+        measurementService.addMeasurement(deviceId, dht11dto, bmp085dto);
+        System.out.println(">>>>    " +  deviceId + " " +  dht11dto.toString() + " " + bmp085dto.toString());
+
+        return "Mut_OK";
     }
 }

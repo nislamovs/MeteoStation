@@ -1,0 +1,7 @@
+- add chrocograf
+- add grafana
+
+- add additional endpoints for graphql
+- add functionality for influxdb (data retrieval, etc)
+
+- add exception handling

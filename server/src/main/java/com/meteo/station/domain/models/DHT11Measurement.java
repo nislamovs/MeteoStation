@@ -7,11 +7,13 @@ import lombok.NoArgsConstructor;
 import org.influxdb.annotation.Column;
 import org.influxdb.annotation.Measurement;
 
+import java.io.Serializable;
+
 @Data
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@Measurement(name = "DHT11")
+@Measurement(name = "DHT11", database = "meteo")
 public class DHT11Measurement {
 
     @Column(name = "deviceId")
@@ -20,6 +22,6 @@ public class DHT11Measurement {
     @Column(name = "humidity")
     private String humidity;
 
-    @Column(name = "tempCelsius")
-    private String tempCelsius;
+    @Column(name = "temperature")
+    private String temperature;
 }

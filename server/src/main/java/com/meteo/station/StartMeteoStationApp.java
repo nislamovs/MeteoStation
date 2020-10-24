@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class StartMeteoStationApp {
 
-	public static void main(String[] args) {
-		SpringApplication.run(StartMeteoStationApp.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(StartMeteoStationApp.class, args);
+    }
 
 }
