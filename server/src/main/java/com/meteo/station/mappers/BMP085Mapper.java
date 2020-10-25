@@ -10,11 +10,14 @@ import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 @Component
-public interface BMP085Mapper {
+public interface BMP085Mapper extends MappingUtils {
 
-//    @Mapping(source = "deviceId", target = "deviceId")
     BMP085DTO toDTO(BMP085Measurement bmp085Measurement);
 
-//    @Mapping(source = "deviceId", target = "deviceId")
+    @Mapping(source = "temperature", target = "temperature", qualifiedByName = "StringToDouble")
+    @Mapping(source = "pressure", target = "pressure", qualifiedByName = "StringToDouble")
+    @Mapping(source = "altitude", target = "altitude", qualifiedByName = "StringToDouble")
+    @Mapping(source = "seaLevelPressure", target = "seaLevelPressure", qualifiedByName = "StringToDouble")
     BMP085Measurement toMeasurement(BMP085DTO bmp085DTO);
+
 }

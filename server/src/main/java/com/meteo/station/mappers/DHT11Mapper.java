@@ -10,11 +10,12 @@ import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 @Component
-public interface DHT11Mapper {
+public interface DHT11Mapper extends MappingUtils {
 
-//    @Mapping(source = "deviceId", target = "deviceId")
     DHT11DTO toDTO(DHT11Measurement dht11Measurement);
 
-//    @Mapping(source = "deviceId", target = "deviceId")
+    @Mapping(source = "temperature", target = "temperature", qualifiedByName = "StringToDouble")
+    @Mapping(source = "humidity", target = "humidity", qualifiedByName = "StringToDouble")
     DHT11Measurement toMeasurement(DHT11DTO dht11DTO);
+
 }

@@ -13,3 +13,31 @@ show field keys
 select * from DHT11 order by time desc limit 10
 
 select * from BMP085 order by time desc limit 10
+
+SHOW SERIES ON meteo
+
+---------------------------------------------------------------------------------------------------------------------
+#To show time value in following format:
+#time				            altitude	deviceId	pressure	seaLevelPressure	temperature
+#----				            --------	--------	--------	----------------	-----------
+#2020-10-24T20:29:34.57Z		54.25 m		5489477		100854 Pa	100848 Pa		    11.60 C
+
+#You can select RFC 3339 formatting by entering the following command in the CLI:
+
+precision rfc3339
+
+---------------------------------------------------------------------------------------------------------------------
+
+select * from DHT11 where deviceId = '5487707'
+
+
+> select distinct("deviceId") from (select * from DHT11)
+or
+> SHOW TAG VALUES from "DHT11" WITH key = deviceId
+
+name: DHT11
+time		        	distinct
+----		        	--------
+1970-01-01T00:00:00Z	5487707
+1970-01-01T00:00:00Z	5489477
+

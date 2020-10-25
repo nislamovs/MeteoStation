@@ -1,0 +1,10 @@
+datasources:
+   - name: meteo
+     type: influxdb
+     access: proxy
+     database: meteo
+     user: influx
+     password: influx
+     url: http://influxdb:8086
+     isDefault: true
+     editable: true

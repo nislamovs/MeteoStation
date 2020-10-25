@@ -6,8 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.influxdb.annotation.Column;
 import org.influxdb.annotation.Measurement;
+import org.influxdb.annotation.TimeColumn;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.Instant;
 
 @Data
 @Builder(toBuilder = true)
@@ -16,19 +19,21 @@ import java.io.Serializable;
 @Measurement(name = "BMP085", database = "meteo")
 public class BMP085Measurement {
 
-    @Column(name = "deviceId")
+    @Column(name = "deviceId", tag = true)
     private String deviceId;
 
     @Column(name = "temperature")
-    private String temperature;
+    private BigDecimal temperature;
 
     @Column(name = "pressure")
-    private String pressure;
+    private BigDecimal pressure;
 
     @Column(name = "altitude")
-    private String altitude;
+    private BigDecimal altitude;
 
     @Column(name = "seaLevelPressure")
-    private String seaLevelPressure;
+    private BigDecimal seaLevelPressure;
 
+    @TimeColumn
+    private Instant time;
 }

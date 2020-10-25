@@ -39,3 +39,28 @@ services:
       - influxdb
     links:
       - influxdb
+
+  grafana:
+    image: grafana/grafana:4.1.1
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./volumes/grafana-storage:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning
+    environment:
+      GF_SERVER_ROOT_URL: http://localhost:3000
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: secret
+    links:
+      - influxdb
+    depends_on:
+      - influxdb
+
+  chronograf:
+    image: chronograf:1.4.3.1
+    environment:
+      INFLUXDB_URL: http://influxdb:8086
+    ports:
+      - "8888:8888"
+    links:
+      - influxdb

@@ -2,6 +2,7 @@ package com.meteo.station.services;
 
 import com.meteo.station.domain.dto.BMP085DTO;
 import com.meteo.station.domain.dto.DHT11DTO;
+import com.meteo.station.domain.models.BMP085Measurement;
 import com.meteo.station.mappers.BMP085Mapper;
 import com.meteo.station.mappers.DHT11Mapper;
 import com.meteo.station.repositories.BMP085Repository;

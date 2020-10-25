@@ -1,5 +1,5 @@
-- add chrocograf
-- add grafana
+- add chronograf
+- add grafana                                                                   OK
 
 - add additional endpoints for graphql
 - add functionality for influxdb (data retrieval, etc)
