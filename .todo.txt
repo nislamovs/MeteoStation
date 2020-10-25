@@ -1,7 +1,9 @@
-- add chronograf
+- add chronograf                                                                OK
 - add grafana                                                                   OK
 
 - add additional endpoints for graphql
 - add functionality for influxdb (data retrieval, etc)
 
 - add exception handling
+
+- README.MD
