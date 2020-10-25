@@ -3,9 +3,9 @@ version: '3'
 services:
 
   influxdb:
+    container_name: "influxdb"
     image: influxdb:latest
     hostname: influxdb
-    container_name: influxdb
     user: "$UID:$GID"
     ports:
       - "8086:8086"
@@ -32,6 +32,7 @@ services:
       - influxdb
 
   influxdb-cli:
+    container_name: "influxdb-cli"
     image: influxdb
     entrypoint:
       - influx
@@ -41,6 +42,7 @@ services:
       - influxdb
 
   grafana:
+    container_name: "grafana"
     image: grafana/grafana:4.1.1
     ports:
       - "3000:3000"
@@ -57,9 +59,12 @@ services:
       - influxdb
 
   chronograf:
+    container_name: "chronograf"
     image: chronograf:1.4.3.1
     environment:
       INFLUXDB_URL: http://influxdb:8086
+    volumes:
+      - ./volumes/chronograf_data:/var/lib/chronograf
     ports:
       - "8888:8888"
     links:
