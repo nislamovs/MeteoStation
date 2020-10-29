@@ -29,7 +29,7 @@ public interface MappingUtils {
     @Named("BigDecimalToString")
     default String extractStringFromBigDecimal(BigDecimal value) {
 
-        return (value == null) ? "N/A" : value.toString();
+        return (value == null) ? "N/A" : String.format("%.2f", value);
     }
 
     @Named("InstantToString")

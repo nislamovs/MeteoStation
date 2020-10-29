@@ -10,6 +10,7 @@ type Queries{
     getLastDHT11MeasurementByDeviceId(deviceId:String): DHT11DTO
     getLastFullMeasurementByDeviceId(deviceId:String): FullMeasurement
 
+    #date pattern "2020-10-30"
     getAvgHumidityByDeviceIdAndDate(deviceId:String date:String): AvgMeasurementDTO
     getAvgTemperatureByDeviceIdAndDate(deviceId:String date:String): AvgMeasurementDTO
     getAvgPressureByDeviceIdAndDate(deviceId:String date:String): AvgMeasurementDTO
