@@ -1,0 +1,31 @@
+query{
+  getLastFullMeasurementByDeviceId(deviceId: "5487707") {
+    deviceId
+    Dht11dto {
+      deviceId
+      time
+      humidity
+      temperature
+    }
+    Bmp085dto {
+      deviceId
+      time
+      temperature
+      pressure
+      altitude
+      seaLevelPressure
+    }
+  }
+}
+
+query{
+  getLastBMP085MeasurementByDeviceId(deviceId: "5487707" ){
+    deviceId
+    time
+    temperature
+    pressure
+    altitude
+    seaLevelPressure
+  }
+}
+

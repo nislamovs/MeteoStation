@@ -23,8 +23,9 @@ import java.util.concurrent.TimeUnit;
  * Created by Nizami Islamovs
  *
  * Everything is the same here (as in original InfluxDBResultMapper),
- * but additionally added BigDecimal support
- *
+ * but additionally added :
+ *  - BigDecimal support
+ *  - Any measurement name entity support
  */
 
 public class InfluxDBCustomResultMapper {
@@ -94,7 +95,7 @@ public class InfluxDBCustomResultMapper {
                               final TimeUnit precision) throws InfluxDBMapperException {
         throwExceptionIfMissingAnnotation(clazz);
         String measurementName = getMeasurementName(clazz);
-        return this.toPOJO(queryResult, clazz, measurementName, precision);
+        return this.toPOJO(queryResult, clazz, measurementName, precision, false);
     }
 
     /**
@@ -118,7 +119,7 @@ public class InfluxDBCustomResultMapper {
      */
     public <T> List<T> toPOJO(final QueryResult queryResult, final Class<T> clazz, final String measurementName)
             throws InfluxDBMapperException {
-        return toPOJO(queryResult, clazz, measurementName, TimeUnit.MILLISECONDS);
+        return toPOJO(queryResult, clazz, measurementName, TimeUnit.MILLISECONDS, false);
     }
 
     /**
@@ -142,7 +143,7 @@ public class InfluxDBCustomResultMapper {
      * possible to define the values of your POJO (e.g. due to an unsupported field type).
      */
     public <T> List<T> toPOJO(final QueryResult queryResult, final Class<T> clazz, final String measurementName,
-                              final TimeUnit precision)
+                              final TimeUnit precision, boolean ignoreMeasurementName)
             throws InfluxDBMapperException {
 
         Objects.requireNonNull(measurementName, "measurementName");
@@ -158,7 +159,10 @@ public class InfluxDBCustomResultMapper {
                 .filter(internalResult -> Objects.nonNull(internalResult) && Objects.nonNull(internalResult.getSeries()))
                 .forEach(internalResult -> {
                     internalResult.getSeries().stream()
-                            .filter(series -> series.getName().equals(measurementName))
+                            .filter(ignoreMeasurementName
+                                                            ? series -> true
+                                                            : series -> series.getName().equals(measurementName)
+                            )
                             .forEachOrdered(series -> {
                                 parseSeriesAs(series, clazz, result, precision);
                             });

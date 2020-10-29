@@ -16,6 +16,13 @@ select * from BMP085 order by time desc limit 10
 
 Select * from BMP085 where deviceId = '5487707' order by time desc limit 1
 
+#only untagged field could be passed as param
+select count(humidity) from DHT11
+
+#avg value by date and deviceId
+select mean(humidity) as humidity, time as time from DHT11 where time >= '2020-10-29 00:00:00' and time < '2020-10-30 00:00:00' and deviceId = '5487707'
+
+#select mean(pressure) as avgPressure, mean(humidity) as avgHumidity, avgTemperature from BMP085,DHT11where time >= '2020-10-29 00:00:00' and time < '2020-10-30 00:00:00' and deviceId = '5487707'
 
 ---------------------------------------------------------------------------------------------------------------------
 

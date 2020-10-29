@@ -16,6 +16,9 @@ public interface MappingUtils {
     @Named("StringToBigDecimal")
     default BigDecimal extractBigDecimalFromString(String value) {
 
+        if (value.equalsIgnoreCase("nan"))
+             return BigDecimal.ZERO;
+
         if (StringUtils.isNotEmpty(value) && value.contains("test"))
             return BigDecimal.ZERO;
 
@@ -26,7 +29,7 @@ public interface MappingUtils {
     @Named("BigDecimalToString")
     default String extractStringFromBigDecimal(BigDecimal value) {
 
-        return value.toString();
+        return (value == null) ? "N/A" : value.toString();
     }
 
     @Named("InstantToString")
@@ -34,6 +37,13 @@ public interface MappingUtils {
         return (value == null)
                 ?   "N/A"
                 :   DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS").withZone(ZoneId.systemDefault()).format(value);
+    }
+
+    @Named("InstantToStringShort")
+    default String extractStringFromInstantShort(Instant value) {
+        return (value == null)
+                ?   "N/A"
+                :   DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(ZoneId.systemDefault()).format(value);
     }
 
     @Named("StringToInstant")

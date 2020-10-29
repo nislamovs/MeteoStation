@@ -1,6 +1,7 @@
 package com.meteo.station.resolvers.queries;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.meteo.station.domain.dto.AvgMeasurementDTO;
 import com.meteo.station.domain.dto.BMP085DTO;
 import com.meteo.station.domain.dto.DHT11DTO;
 import com.meteo.station.domain.dto.FullMeasurementDTO;
@@ -8,8 +9,6 @@ import com.meteo.station.services.MeasurementService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 @Slf4j
@@ -31,20 +30,19 @@ public class MeasurementQueryResolver implements GraphQLQueryResolver {
     }
 
 
-
-    public String getAvgHumidityByDeviceIdAndDate(String deviceId, String date) {
+    public AvgMeasurementDTO getAvgHumidityByDeviceIdAndDate(String deviceId, String date) {
         return measurementService.getAvgHumidityByDeviceIdAndDate(deviceId, date);
     }
 
-    public String getAvgTemperatureByDeviceIdAndDate(String deviceId, String date) {
+    public AvgMeasurementDTO getAvgTemperatureByDeviceIdAndDate(String deviceId, String date) {
         return measurementService.getAvgTemperatureByDeviceIdAndDate(deviceId, date);
     }
 
-    public String getAvgPressureByDeviceIdAndDate(String deviceId, String date) {
+    public AvgMeasurementDTO getAvgPressureByDeviceIdAndDate(String deviceId, String date) {
         return measurementService.getAvgPressureByDeviceIdAndDate(deviceId, date);
     }
 
-    public String getAvgFullMeasurementByDeviceIdAndDate(String deviceId, String date) {
+    public AvgMeasurementDTO getAvgFullMeasurementByDeviceIdAndDate(String deviceId, String date) {
         return measurementService.getAvgFullMeasurementByDeviceIdAndDate(deviceId, date);
     }
 

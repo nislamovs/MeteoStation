@@ -37,30 +37,4 @@ public class BMP085Repository extends DBSpecificValues {
         return resultMapper.toPOJO(queryResult, BMP085Measurement.class).get(0);
     }
 
-//    public void readAllDataByDeviceId(final BMP085Measurement measurement) {
-//        final Point point = Point.measurementByPOJO(BMP085Measurement.class)
-//                .time(System.currentTimeMillis(), TimeUnit.MILLISECONDS)
-//                .addFieldsFromPOJO(measurement)
-//                .build();
-//
-//        influxDBTemplate.query(point);
-//    }
-//
-//    public void readAllDataByDeviceId(final BMP085Measurement measurement) {
-//        final Point point = Point.measurementByPOJO(BMP085Measurement.class)
-//                .time(System.currentTimeMillis(), TimeUnit.MILLISECONDS)
-//                .addFieldsFromPOJO(measurement)
-//                .build();
-//
-//        influxDBTemplate.query(point);
-//    }
-//
-//    public void readAllDataByDeviceId(final BMP085Measurement measurement) {
-//        final Point point = Point.measurementByPOJO(BMP085Measurement.class)
-//                .time(System.currentTimeMillis(), TimeUnit.MILLISECONDS)
-//                .addFieldsFromPOJO(measurement)
-//                .build();
-//
-//        influxDBTemplate.query(point);
-//    }
 }

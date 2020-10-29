@@ -10,10 +10,10 @@ type Queries{
     getLastDHT11MeasurementByDeviceId(deviceId:String): DHT11DTO
     getLastFullMeasurementByDeviceId(deviceId:String): FullMeasurement
 
-    getAvgHumidityByDeviceIdAndDate(deviceId:String date:String): String
-    getAvgTemperatureByDeviceIdAndDate(deviceId:String date:String): String
-    getAvgPressureByDeviceIdAndDate(deviceId:String date:String): String
-    getAvgFullMeasurementByDeviceIdAndDate(deviceId:String date:String): String
+    getAvgHumidityByDeviceIdAndDate(deviceId:String date:String): AvgMeasurementDTO
+    getAvgTemperatureByDeviceIdAndDate(deviceId:String date:String): AvgMeasurementDTO
+    getAvgPressureByDeviceIdAndDate(deviceId:String date:String): AvgMeasurementDTO
+    getAvgFullMeasurementByDeviceIdAndDate(deviceId:String date:String): AvgMeasurementDTO
 
 }
 
@@ -59,4 +59,13 @@ type FullMeasurement {
 
     Dht11dto: DHT11DTO
     Bmp085dto: BMP085DTO
+}
+
+type AvgMeasurementDTO {
+    deviceId:String
+    date: String
+
+    avgTemperature: String
+    avgHumidity: String
+    avgPressure: String
 }
