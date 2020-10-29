@@ -29,5 +29,6 @@ public class DHT11Measurement {
     private BigDecimal temperature;
 
     @TimeColumn
+    @Column(name = "time")
     private Instant time;
 }

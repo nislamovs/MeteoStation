@@ -12,10 +12,13 @@ import org.springframework.stereotype.Component;
 @Component
 public interface DHT11Mapper extends MappingUtils {
 
+    @Mapping(source = "temperature", target = "temperature", qualifiedByName = "BigDecimalToString")
+    @Mapping(source = "humidity", target = "humidity", qualifiedByName = "BigDecimalToString")
+    @Mapping(source = "time", target = "time", qualifiedByName = "InstantToString")
     DHT11DTO toDTO(DHT11Measurement dht11Measurement);
 
-    @Mapping(source = "temperature", target = "temperature", qualifiedByName = "StringToDouble")
-    @Mapping(source = "humidity", target = "humidity", qualifiedByName = "StringToDouble")
+    @Mapping(source = "temperature", target = "temperature", qualifiedByName = "StringToBigDecimal")
+    @Mapping(source = "humidity", target = "humidity", qualifiedByName = "StringToBigDecimal")
     DHT11Measurement toMeasurement(DHT11DTO dht11DTO);
 
 }

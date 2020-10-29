@@ -1,4 +1,4 @@
-package com.meteo.station.resolvers.station;
+package com.meteo.station.resolvers.mutations;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.meteo.station.domain.dto.BMP085DTO;
@@ -11,15 +11,17 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 @RequiredArgsConstructor
-public class MeasurementMutation implements GraphQLMutationResolver {
+public class MeasurementMutationResolver implements GraphQLMutationResolver {
 
     private final MeasurementService measurementService;
 
     public String addMeasurement(String deviceId, DHT11DTO dht11dto, BMP085DTO bmp085dto) {
 
         measurementService.addMeasurement(deviceId, dht11dto, bmp085dto);
-        System.out.println(">>>>    " +  deviceId + " " +  dht11dto.toString() + " " + bmp085dto.toString());
 
-        return "Mut_OK";
+        System.out.println(">>>>    " +  deviceId + " " +  dht11dto.toString() + " " + bmp085dto.toString());
+        log.info(">>>>    " +  deviceId + " " +  dht11dto + " " + bmp085dto);
+
+        return "Mutation_OK";
     }
 }

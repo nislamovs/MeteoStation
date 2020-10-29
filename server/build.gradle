@@ -47,12 +47,11 @@ dependencies {
 	implementation "org.mapstruct:mapstruct:1.3.1.Final"
 	annotationProcessor "org.mapstruct:mapstruct-processor:1.3.1.Final"
 
-	// If you are using mapstruct in test code
-	testAnnotationProcessor "org.mapstruct:mapstruct-processor:1.3.1.Final"
-
 	implementation 'com.graphql-java-kickstart:graphql-spring-boot-starter:6.0.1'
-	implementation 'com.graphql-java-kickstart:graphiql-spring-boot-starter:6.0.1'		// to embed GraphiQL tool
-	implementation 'com.graphql-java-kickstart:voyager-spring-boot-starter:6.0.1'			// to embed Voyager tool
+	runtimeOnly 'com.graphql-java-kickstart:graphiql-spring-boot-starter:6.0.1'		    				// to embed GraphiQL tool
+	runtimeOnly 'com.graphql-java-kickstart:voyager-spring-boot-starter:6.0.1'							// to embed Voyager tool
+	runtimeOnly 'com.graphql-java-kickstart:altair-spring-boot-starter:6.0.1'							// to embed Altair tool
+
 //	implementation 'com.graphql-java:graphql-java-tools:5.2.0'
 	implementation 'com.graphql-java:graphql-java:14.0'
 
@@ -64,6 +63,9 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	testImplementation 'com.graphql-java-kickstart:graphql-spring-boot-starter-test:6.0.1'
+	// If you are using mapstruct in test code
+	testAnnotationProcessor "org.mapstruct:mapstruct-processor:1.3.1.Final"
 }
 
 test {

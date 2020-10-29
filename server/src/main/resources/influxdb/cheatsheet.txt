@@ -14,7 +14,20 @@ select * from DHT11 order by time desc limit 10
 
 select * from BMP085 order by time desc limit 10
 
+Select * from BMP085 where deviceId = '5487707' order by time desc limit 1
+
+
+---------------------------------------------------------------------------------------------------------------------
+
 SHOW SERIES ON meteo
+
+key
+---
+BMP085,deviceId=5487707
+BMP085,deviceId=5489477
+DHT11,deviceId=5487707
+DHT11,deviceId=5489477
+
 
 ---------------------------------------------------------------------------------------------------------------------
 #To show time value in following format:

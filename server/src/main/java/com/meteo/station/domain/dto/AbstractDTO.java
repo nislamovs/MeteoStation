@@ -1,19 +1,20 @@
 package com.meteo.station.domain.dto;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-
-@EqualsAndHashCode(callSuper = true)
 @Data
-@SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@SuperBuilder(toBuilder = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DHT11DTO extends AbstractDTO {
+public abstract class AbstractDTO {
 
-    private String humidity;
-    private String temperature;
+    private String deviceId;
+
+    private String time;
 }
-

@@ -4,17 +4,40 @@ import org.apache.commons.lang3.StringUtils;
 import org.mapstruct.Named;
 
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 import static java.lang.Double.parseDouble;
+import static java.time.Instant.now;
 
 public interface MappingUtils {
 
-    @Named("StringToDouble")
-    default BigDecimal extractDoubleFromString(String value) {
+    @Named("StringToBigDecimal")
+    default BigDecimal extractBigDecimalFromString(String value) {
 
         if (StringUtils.isNotEmpty(value) && value.contains("test"))
             return BigDecimal.ZERO;
 
         String numericVal = String.format("%.2f", parseDouble(value.split(" ")[0]));
         return new BigDecimal(numericVal);
+    }
+
+    @Named("BigDecimalToString")
+    default String extractStringFromBigDecimal(BigDecimal value) {
+
+        return value.toString();
+    }
+
+    @Named("InstantToString")
+    default String extractStringFromInstant(Instant value) {
+        return (value == null)
+                ?   "N/A"
+                :   DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS").withZone(ZoneId.systemDefault()).format(value);
+    }
+
+    @Named("StringToInstant")
+    default Instant extractInstantFromString(String value) {
+        return now();
     }
 }

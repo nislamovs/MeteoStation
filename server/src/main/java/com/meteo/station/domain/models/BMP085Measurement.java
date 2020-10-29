@@ -35,5 +35,6 @@ public class BMP085Measurement {
     private BigDecimal seaLevelPressure;
 
     @TimeColumn
+    @Column(name = "time")
     private Instant time;
 }

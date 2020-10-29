@@ -6,7 +6,7 @@ Wireless weather stations with server for visualizing weather data.
 - Arduino/C, NodeMCU, ESP8266, BMP085, DHT11
 - Java8, SpringBoot, SpringData
 - InfluxDB
-- GraphQL
+- GraphQL (kickstart lib)
 - Grafana, Chronograf
 
 ![Device](docs/photos/IMG_20201022_184324.jpg) <!-- .element height="50%" width="50%" -->

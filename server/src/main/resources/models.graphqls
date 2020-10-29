@@ -6,25 +6,57 @@ schema {
 
 type Queries{
 
-    getBMP085MeasurementsByDeviceId(deviceId:String): String
-    getDHT11MeasurementsByDeviceId(deviceId:String): String
+    getLastBMP085MeasurementByDeviceId(deviceId:String): BMP085DTO
+    getLastDHT11MeasurementByDeviceId(deviceId:String): DHT11DTO
+    getLastFullMeasurementByDeviceId(deviceId:String): FullMeasurement
+
+    getAvgHumidityByDeviceIdAndDate(deviceId:String date:String): String
+    getAvgTemperatureByDeviceIdAndDate(deviceId:String date:String): String
+    getAvgPressureByDeviceIdAndDate(deviceId:String date:String): String
+    getAvgFullMeasurementByDeviceIdAndDate(deviceId:String date:String): String
+
 }
 
 ########################################   MUTATIONS   ##############################################
 
 
 type Mutations{
-    addMeasurement(deviceId:String dht11dto:DHT11DTO bmp085dto:BMP085DTO): String
+    addMeasurement(deviceId:String dht11dto:DHT11DTO_input bmp085dto:BMP085DTO_input): String
 }
 
-input DHT11DTO {
+input DHT11DTO_input {
     humidity: String
     temperature: String
 }
 
-input BMP085DTO{
+input BMP085DTO_input {
     temperature: String
     pressure: String
     altitude: String
     seaLevelPressure: String
+}
+
+type DHT11DTO {
+    deviceId:String
+    time: String
+
+    humidity: String
+    temperature: String
+}
+
+type BMP085DTO {
+    deviceId:String
+    time: String
+
+    temperature: String
+    pressure: String
+    altitude: String
+    seaLevelPressure: String
+}
+
+type FullMeasurement {
+    deviceId:String
+
+    Dht11dto: DHT11DTO
+    Bmp085dto: BMP085DTO
 }
