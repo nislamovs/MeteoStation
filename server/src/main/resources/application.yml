@@ -25,22 +25,28 @@ management:
 graphql:
   servlet:
     actuator-metrics: true
+    maxQueryDepth: 5
+    exception-handlers-enabled: true
   playground:
     cdn:
       version: latest
+
 altair:
   enabled: true
   cdn:
     enabled: false
+
 graphiql:
   enabled: true
   cdn:
     enabled: true
     version: 0.17.5
+
 voyager:
   enabled: true
   cdn:
     enabled: false
+
 graphql.playground:
   enabled: true
   cdn:

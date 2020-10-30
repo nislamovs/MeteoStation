@@ -60,6 +60,8 @@ dependencies {
 	implementation 'org.influxdb:influxdb-java:2.20'
 //	compile "com.influxdb:influxdb-client-java:1.12.0"
 
+	implementation 'org.hibernate.validator:hibernate-validator:6.1.6.Final'
+
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}

@@ -2,14 +2,14 @@
 - add grafana                                                                   OK
 
 - add additional endpoints for graphql                                          OK
-- add functionality for influxdb (data retrieval, etc)
+- add functionality for influxdb (data retrieval, etc)                          OK
 
-    - get average temperature by date
-    - get average pressure by date
-    - get average humidity by date
-    - get all three val (avg) by date
+    - get average temperature by date                                           OK
+    - get average pressure by date                                              OK
+    - get average humidity by date                                              OK
+    - get all three val (avg) by date                                           OK
 
-- add exception handling
-- write bash scripts for graphql endpoint
+- add exception handling                                                        --
+- write bash scripts for graphql endpoint                                       not needed
 
 - README.MD                                                                     OK
