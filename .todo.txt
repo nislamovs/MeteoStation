@@ -9,7 +9,7 @@
     - get average humidity by date                                              OK
     - get all three val (avg) by date                                           OK
 
-- add exception handling                                                        --
+- add exception handling                                                        OK
 - write bash scripts for graphql endpoint                                       not needed
 
 - README.MD                                                                     OK
